@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+        "name": "Logger Plug-in",
+        "version": "0.1",
+        "description": "Tracks transaction id",
+
+        "icons": {
+            "48": "images/app_icon_simplified.png",
+            "128": "images/app_icon_simplified_128x128.png"
+        },
+        "content_scripts" : [{
+	        "matches" : ["http://*/*"],
+	        "js" : ["js/content_script.js"]
+	    }],
+
+        "background": {
+            "scripts": ["js/jquery-2.1.4.min.js","js/background.js"],
+            "persistent": true
+        },
+
+        "permissions": [
+            "http://localhost/*",
+            "activeTab",
+		 	"https://ajax.googleapis.com/",
+		    "webRequest",
+		    "https://pull.logentries.com/*"
+        ],
+        "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+        "devtools_page": "html/devtools.html"
+}

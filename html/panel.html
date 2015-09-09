@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/panel.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery.dataTables.css">
+<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.js"></script>
+<style>
+#wrapper {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#leftcolumn, #rightcolumn {
+	border: 1px solid white;
+	color: black;
+        overflow: auto;
+}
+
+#leftcolumn {
+	background-color: transparent;
+	width: 300px;
+	height: 300px;
+	float: left;
+	border-style: solid;
+	border-right: thick double #000000;
+}
+
+#rightcolumn {
+	background-color: transparent;
+        margin-left: 300px;
+}
+</style>
+</head>
+<body>
+	<div id="wrapper" style="background-color: white; overflow: hidden;">
+		<div id="leftcolumn"> 
+			<!-- <div style="font-size: medium;">
+				<b>Transaction - Id</b>
+			</div> -->
+			<table id="transactionIdtable" class="display">
+				<thead><th>Transaction - Id</th><th>URL</th></thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div id="rightcolumn" align="center">
+			<div id="logDetailsMsgDiv">Click on transaction id to get the details.</div>
+			<div id="detailsTableDiv"  style="display: none;">
+				<table id="transactionDetailsTable" class="display">
+					<thead><th>Details</th></thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
