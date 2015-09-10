@@ -1,8 +1,13 @@
 var ports = [];
+var accountKey = "";
 var domainToLogs = {
   // "server":["/path/to/log/", ... ]
   // "example.com":["/myservice/logs/", "myservice2/logs"]
 };
+
+var hostnames = [/* "https://example.com/*", "http://hostname/*" */];
+
+
 chrome.runtime.onConnect.addListener(function(port) {
     if (port.name !== "devtools") return;
     ports.push(port);
@@ -39,7 +44,6 @@ function getLogDetails(msg) {
 
     var deferredArr = $.map(logs, function(log, i) {
       // Your logentries account key
-      var accountKey = "";
       var url = "https://pull.logentries.com/"+accountKey+"/hosts"+log+"?filter=" + msg.transaction_id;
       console.log("Fetching " + url);
       return $.ajax({
@@ -76,4 +80,4 @@ chrome.webRequest.onCompleted.addListener(
                 notifyDevtools(transaction_id_json);
             }
         }
-    },{urls:[ /* "http://example.com/*" */ ]}, ["responseHeaders"]);
+    },{urls:hostnames}, ["responseHeaders"]);
